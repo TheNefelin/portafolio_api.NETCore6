@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace portafolio_api.NETCore6.Models
+{
+    public class Tecnologias
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "The Text Cannot Exceed the 50 Characters")]
+        public string? Nombre { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "The Text Cannot Exceed the 50 Characters")]
+        public string? Apellido { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "The Text Cannot Exceed the 50 Characters")]
+        public string? Alias { get; set; }
+    }
+}
