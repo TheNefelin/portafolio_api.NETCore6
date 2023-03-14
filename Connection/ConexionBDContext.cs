@@ -95,6 +95,22 @@ namespace portafolio_api.NETCore6.Connection
             return r;
         }
 
+        public async Task<dynamic> PA_Negocio_GetById(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_Negocio_GetById @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
+
         //-- Demo Tipo Alimento -------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------
         public async Task<IEnumerable<dynamic>> PA_TipoAlimento_GetAll(
@@ -120,6 +136,22 @@ namespace portafolio_api.NETCore6.Connection
             var r = await conexion.QueryAsync(
                 new CommandDefinition(
                     $"pa_TipoAlimento_GetById @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
+
+        public async Task<IEnumerable<dynamic>> PA_TipoAlimento_GetByIdNegocio(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_TipoAlimento_GetByIdNegocio @{nameof(id)}",
                     new { id },
                     transaction: transaccion,
                     cancellationToken: cancelarToken));
@@ -159,6 +191,38 @@ namespace portafolio_api.NETCore6.Connection
             return r;
         }
 
+        public async Task<IEnumerable<dynamic>> PA_ItemCateg_GetByIdNegocio(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_ItemCateg_GetByIdNegocio @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
+
+        public async Task<IEnumerable<dynamic>> PA_ItemCateg_GetByIdTipoAlim(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_ItemCateg_GetByIdTipoAlim @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
+
         //-- Demo Item ----------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------
         public async Task<IEnumerable<dynamic>> pa_Item_GetAll(
@@ -191,5 +255,36 @@ namespace portafolio_api.NETCore6.Connection
             return r;
         }
 
+        public async Task<IEnumerable<dynamic>> PA_Item_GetByIdCateg(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_Item_GetByIdCateg @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
+
+        public async Task<IEnumerable<dynamic>> PA_Item_GetByIdNegocio(
+            int id,
+            IDbConnection conexion,
+            IDbTransaction? transaccion,
+            CancellationToken cancelarToken)
+        {
+            var r = await conexion.QueryAsync(
+                new CommandDefinition(
+                    $"pa_Item_GetByIdNegocio @{nameof(id)}",
+                    new { id },
+                    transaction: transaccion,
+                    cancellationToken: cancelarToken));
+
+            return r;
+        }
     }
 }

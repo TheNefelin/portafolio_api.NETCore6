@@ -33,5 +33,22 @@ namespace portafolio_api.NETCore6.Controllers
 
             return r;
         }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<dynamic> PA_Negocio_GetById(
+            int id,
+            CancellationToken cancelarToken)
+        {
+            var conexion = _context.CreateConnection();
+
+            var r = await _context.PA_Negocio_GetById(
+                id,
+                conexion,
+                default,
+                cancelarToken);
+
+            return r;
+        }
     }
 }

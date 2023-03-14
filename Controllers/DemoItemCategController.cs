@@ -36,13 +36,47 @@ namespace portafolio_api.NETCore6.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IEnumerable<dynamic>> PA_ItemCateg_GetById(
+        public async Task<dynamic> PA_ItemCateg_GetById(
             int id,
             CancellationToken cancelarToken)
         {
             var conexion = _context.CreateConnection();
 
             var r = await _context.PA_ItemCateg_GetById(
+                id,
+                conexion,
+                default,
+                cancelarToken);
+
+            return r;
+        }
+
+        [HttpGet]
+        [Route("IdNegocio/{id:int}")]
+        public async Task<IEnumerable<dynamic>> PA_ItemCateg_GetByIdNegocio(
+            int id,
+            CancellationToken cancelarToken)
+        {
+            var conexion = _context.CreateConnection();
+
+            var r = await _context.PA_ItemCateg_GetByIdNegocio(
+                id,
+                conexion,
+                default,
+                cancelarToken);
+
+            return r;
+        }
+
+        [HttpGet]
+        [Route("IdTipoAlimento/{id:int}")]
+        public async Task<IEnumerable<dynamic>> PA_ItemCateg_GetByIdTipoAlim(
+            int id,
+            CancellationToken cancelarToken)
+        {
+            var conexion = _context.CreateConnection();
+
+            var r = await _context.PA_ItemCateg_GetByIdTipoAlim(
                 id,
                 conexion,
                 default,

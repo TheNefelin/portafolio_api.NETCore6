@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using portafolio_api.NETCore6.Connection;
 
 namespace portafolio_api.NETCore6.Controllers
@@ -43,6 +44,23 @@ namespace portafolio_api.NETCore6.Controllers
             var conexion = _context.CreateConnection();
 
             var r = await _context.PA_TipoAlimento_GetById(
+                id,
+                conexion,
+                default,
+                cancelarToken);
+
+            return r;
+        }
+
+        [HttpGet]
+        [Route("IdNegocio/{id:int}")]
+        public async Task<IEnumerable<dynamic>> PA_TipoAlimento_GetByIdNegocio(
+            int id,
+            CancellationToken cancelarToken)
+        {
+            var conexion = _context.CreateConnection();
+
+            var r = await _context.PA_TipoAlimento_GetByIdNegocio(
                 id,
                 conexion,
                 default,
