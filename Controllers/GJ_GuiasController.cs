@@ -22,11 +22,13 @@ namespace portafolio_api.NETCore6.Controllers
         [HttpGet]
         [Route("")]
         public async Task<IEnumerable<dynamic>> GJ_Guias_GetAll(
+            [Required] string user,
             CancellationToken cancelarToken)
         {
             var conexion = _context.CreateConnection();
 
             var r = await _context.GJ_Guias_GetAll(
+                user,
                 conexion,
                 default,
                 cancelarToken);

@@ -258,13 +258,15 @@ namespace portafolio_api.NETCore6.Connection
         //-- Guia Guias ---------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------
         public async Task<IEnumerable<dynamic>> GJ_Guias_GetAll(
+            string User,
             IDbConnection conexion,
             IDbTransaction? transaccion,
             CancellationToken cancelarToken)
         {
             var r = await conexion.QueryAsync(
                 new CommandDefinition(
-                    $"pa_gj_guias",
+                    $"pa_gj_guias @{nameof(User)}",
+                    new { User },
                     transaction: transaccion,
                     cancellationToken: cancelarToken));
 
